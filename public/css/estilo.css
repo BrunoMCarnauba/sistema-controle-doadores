@@ -178,19 +178,19 @@ html{
 
 /* ------------------------------- Botões filas ---------------------------------------- */
 .botaoChamarDoadorDaFila{
-	background-image: url("{{asset('imagens/Botoes/Botao_chamar_doador.png')}}"); 
+	background-image: url("..imagens/Botoes/Botao_chamar_doador.png"); 
 	background-repeat: no-repeat;
 	min-width: 158px;
 	min-height: 25px;
 }
 .botaoRemoverDaFila{
-	background-image: url("{{asset('imagens/Botoes/Botao_remover_da_fila.png')}}"); 
+	background-image: url("..imagens/Botoes/Botao_remover_da_fila.png"); 
 	background-repeat: no-repeat;
 	min-width: 158px;
 	min-height: 25px;
 }
 .botaoTrocarPosicaoDaFila{
-	background-image: url("{{asset('imagens/Botoes/Botao_trocar_posicao.png')}}"); 
+	background-image: url("..imagens/Botoes/Botao_trocar_posicao.png"); 
 	background-repeat: no-repeat;
 	min-width: 158px;
 	min-height: 25px;
@@ -200,7 +200,7 @@ html{
 
 
 .botaoMedioCadastrarFuncionario{
-	background-image: url("{{asset('imagens/Botoes/Botao_cadastrar_funcionario.png')}}");
+	background-image: url("..imagens/Botoes/Botao_cadastrar_funcionario.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -209,7 +209,7 @@ html{
 }
 
 .botaoMedioRecepcao{
-	background-image: url("{{asset('imagens/Botoes/Botao_Recepcao.png')}}");
+	background-image: url("..imagens/Botoes/Botao_Recepcao.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -218,7 +218,7 @@ html{
 }
 
 .botaoMedioCadastrarDoador{
-	background-image: url("{{asset('imagens/Botoes/Botao_cadastrar_doador.png')}}");
+	background-image: url("..imagens/Botoes/Botao_cadastrar_doador.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -227,7 +227,7 @@ html{
 }
 
 .botaoMedioBuscarCadastros{
-	background-image: url("{{asset('imagens/Botoes/Botao_buscar_cadastro_de_doador.png')}}");
+	background-image: url("..imagens/Botoes/Botao_buscar_cadastro_de_doador.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -236,7 +236,7 @@ html{
 }
 
 .botaoMedioAgendarDoacao{
-	background-image: url("{{asset('imagens/Botoes/Botao_agendar_doacao.png')}}");
+	background-image: url("..imagens/Botoes/Botao_agendar_doacao.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -245,7 +245,7 @@ html{
 }
 
 .botaoMedioVisualizarAgendamentos{
-	background-image: url("{{asset('imagens/Botoes/Botao_visualizar_agendamentos.png')}}");
+	background-image: url("..imagens/Botoes/Botao_visualizar_agendamentos.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -254,7 +254,7 @@ html{
 }
 
 .botaoMedioRegistrarDoacao{
-	background-image: url("{{asset('imagens/Botoes/Botao_registrar_doacao.png')}}");
+	background-image: url("..imagens/Botoes/Botao_registrar_doacao.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -263,7 +263,7 @@ html{
 }
 
 .botaoMedioPreTriagem{
-	background-image: url("{{asset('imagens/Botoes/Botao_pre-triagem _e_triagem.png')}}");
+	background-image: url("..imagens/Botoes/Botao_pre-triagem _e_triagem.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -272,7 +272,7 @@ html{
 }
 
 .botaoMedioEstatisticas{
-	background-image: url("{{asset('imagens/Botoes/Botao_estatisticas.png')}}");
+	background-image: url("..imagens/Botoes/Botao_estatisticas.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -285,7 +285,7 @@ html{
 /* ------------------------------- Botões grandes ----------------------------------------*/
 
 .botaoCadastrarFuncionario{
-	background-image: url("{{asset('imagens/Botoes/Botao_cadastrar_funcionario.png')}}");
+	background-image: url("..imagens/Botoes/Botao_cadastrar_funcionario.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -293,7 +293,7 @@ html{
 }
 
 .botaoRecepcao{
-	background-image: url("{{asset('imagens/Botoes/Botao_Recepcao.png')}}");
+	background-image: url("..imagens/Botoes/Botao_Recepcao.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -301,7 +301,7 @@ html{
 }
 
 .botaoCadastrarDoador{
-	background-image: url("{{asset('imagens/Botoes/Botao_cadastrar_doador.png')}}");
+	background-image: url("..imagens/Botoes/Botao_cadastrar_doador.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -309,7 +309,7 @@ html{
 }
 
 .botaoBuscarCadastros{
-	background-image: url("{{asset('imagens/Botoes/Botao_buscar_cadastro_de_doador.png')}}");
+	background-image: url("..imagens/Botoes/Botao_buscar_cadastro_de_doador.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -317,7 +317,7 @@ html{
 }
 
 .botaoAgendarDoacao{
-	background-image: url("{{asset('imagens/Botoes/Botao_agendar_doacao.png')}}");
+	background-image: url("..imagens/Botoes/Botao_agendar_doacao.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -325,7 +325,7 @@ html{
 }
 
 .botaoVisualizarAgendamentos{
-	background-image: url("{{asset('imagens/Botoes/Botao_visualizar_agendamentos.png')}}");
+	background-image: url("..imagens/Botoes/Botao_visualizar_agendamentos.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -333,7 +333,7 @@ html{
 }
 
 .botaoRegistrarDoacao{
-	background-image: url("{{asset('imagens/Botoes/Botao_registrar_doacao.png')}}");
+	background-image: url("..imagens/Botoes/Botao_registrar_doacao.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -341,7 +341,7 @@ html{
 }
 
 .botaoPreTriagem{
-	background-image: url("{{asset('imagens/Botoes/Botao_pre-triagem _e_triagem.png')}}");
+	background-image: url("..imagens/Botoes/Botao_pre-triagem _e_triagem.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -349,7 +349,7 @@ html{
 }
 
 .botaoEstatisticas{
-	background-image: url("imagens/Botoes/Botao_estatisticas.png");
+	background-image: url("..imagens/Botoes/Botao_estatisticas.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;

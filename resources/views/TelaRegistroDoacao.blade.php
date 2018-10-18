@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Registrar doação - Sis Controle de Doadores</title>
-	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
 
 	<style type="text/css">
 
