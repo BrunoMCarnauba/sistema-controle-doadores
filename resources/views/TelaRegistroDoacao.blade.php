@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
 	<title>Registrar doação - Sis Controle de Doadores</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
+    <script type="text/javascript" src="{{asset('js/JScript.js')}}"></script>
 
 	<style type="text/css">
 
@@ -35,11 +36,16 @@
 			<div id="cabecalho_pt2">
 				<h1 style="margin-top: 0px; margin-bottom: 0px; color: white;">Sistema de controle de doadores</h1>
 				<h2 style="margin-top: 0px; color: white">Registro de doação</h2>
-				<a href="TelaMenu.html" class="botaoInicio">Início</a>
-				<a href="TelaLogin.html" class="botaoSair">Sair</a>
+				<a href="{{Route('menu')}}" class="botaoInicio">Início</a>
+				<a href="{{Route('login')}}" class="botaoSair">Sair</a>
 			</div>
 		</div>
 	</header>
+
+	@if(session('notificacao')) <!-- Se essa página tiver vindo de um redirecionamento junto com a variável 'notificacao' -->
+	<div class="notificacao"><p>{{session('notificacao')}}</p></div> <!-- Então, mostre a notificacao -->
+	@endif
+
 	<!-- Conteúdo -->
 	<div id="conteudo">
 		<!-- Campo CPF + Informações do doador -->
@@ -61,7 +67,7 @@
 			<form action="{{Route('registrarDoacao')}}" method="post">
 				{{csrf_field()}} <!-- Token para a comunicação do cliente com o servidor, para evitar ataque malicioso -->
 				<label>Tipo de doação</label>
-				<select class="camposCadastro">
+				<select class="camposCadastro" name="tipoDoacao">
 					<option>Selecione</option>
 					<option>Doação de sangue</option>
 					<option>Doação de medula óssea</option>
@@ -69,6 +75,16 @@
 				<br>
 				<input type="submit" name="registrarDoacao" value="Registrar doação" class="botoesSimplesMaior" style="margin-top: 20px; margin-right: 10px;">
 			</form>
+
+			@if ($errors->any()) <!-- Checa se houve erros -->
+			<div class="erroCadastro"> 
+				<strong>Erro!</strong> 
+				@foreach ($errors->all() as  $error) <!-- Lista todos os erros -->
+				<p>{{$error}}</p>
+				@endforeach
+			</div>
+			@endif
+
 		</div>
 
 		<!-- Filas -->

@@ -33,12 +33,27 @@ html{
 	min-width: 451px; /*Para as palavras cortarem, mas não desaparecerem se for um tamanho menor*/
 }
 
+.notificacao{
+	background-color: #aa0002;
+	max-width: 300px;
+	color: white; /* Cor da fonte */
+	padding: 7px 12px; /* Padding para top e bottom, e left e right*/
+	border-radius: 5px; /* Cria curva para as bordas */
+	position: absolute;
+	top: 85px;
+	right: 1%;
+}
+
+.notificacao p{  /* Alterar apenas os parágrafos do .notificacao */
+	line-height: 0px; /* Para tirar espaçamento dos parágrafos */
+}
+
 #rodape{
 	height: 20px;
 	width: 100%;
 	background-color: #cf0003;
 	margin-top: 12px;
-	position: absolute;
+	position: fixed; /* Preciso corrigir o rodapé. Mudar essa posição fixed, usar outra, preciso pesquisar como fazer o rodapé. */
 	bottom: 0;
 }
 
@@ -178,19 +193,19 @@ html{
 
 /* ------------------------------- Botões filas ---------------------------------------- */
 .botaoChamarDoadorDaFila{
-	background-image: url("..imagens/Botoes/Botao_chamar_doador.png"); 
+	background-image: url("../imagens/Botoes/Botao_chamar_doador.png"); 
 	background-repeat: no-repeat;
 	min-width: 158px;
 	min-height: 25px;
 }
 .botaoRemoverDaFila{
-	background-image: url("..imagens/Botoes/Botao_remover_da_fila.png"); 
+	background-image: url("../imagens/Botoes/Botao_remover_da_fila.png"); 
 	background-repeat: no-repeat;
 	min-width: 158px;
 	min-height: 25px;
 }
 .botaoTrocarPosicaoDaFila{
-	background-image: url("..imagens/Botoes/Botao_trocar_posicao.png"); 
+	background-image: url("../imagens/Botoes/Botao_trocar_posicao.png"); 
 	background-repeat: no-repeat;
 	min-width: 158px;
 	min-height: 25px;
@@ -200,7 +215,7 @@ html{
 
 
 .botaoMedioCadastrarFuncionario{
-	background-image: url("..imagens/Botoes/Botao_cadastrar_funcionario.png");
+	background-image: url("../imagens/Botoes/Botao_cadastrar_funcionario.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -209,7 +224,7 @@ html{
 }
 
 .botaoMedioRecepcao{
-	background-image: url("..imagens/Botoes/Botao_Recepcao.png");
+	background-image: url("../imagens/Botoes/Botao_Recepcao.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -218,7 +233,7 @@ html{
 }
 
 .botaoMedioCadastrarDoador{
-	background-image: url("..imagens/Botoes/Botao_cadastrar_doador.png");
+	background-image: url("../imagens/Botoes/Botao_cadastrar_doador.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -227,7 +242,7 @@ html{
 }
 
 .botaoMedioBuscarCadastros{
-	background-image: url("..imagens/Botoes/Botao_buscar_cadastro_de_doador.png");
+	background-image: url("../imagens/Botoes/Botao_buscar_cadastro_de_doador.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -236,7 +251,7 @@ html{
 }
 
 .botaoMedioAgendarDoacao{
-	background-image: url("..imagens/Botoes/Botao_agendar_doacao.png");
+	background-image: url("../imagens/Botoes/Botao_agendar_doacao.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -245,7 +260,7 @@ html{
 }
 
 .botaoMedioVisualizarAgendamentos{
-	background-image: url("..imagens/Botoes/Botao_visualizar_agendamentos.png");
+	background-image: url("../imagens/Botoes/Botao_visualizar_agendamentos.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -254,7 +269,7 @@ html{
 }
 
 .botaoMedioRegistrarDoacao{
-	background-image: url("..imagens/Botoes/Botao_registrar_doacao.png");
+	background-image: url("../imagens/Botoes/Botao_registrar_doacao.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -263,7 +278,7 @@ html{
 }
 
 .botaoMedioPreTriagem{
-	background-image: url("..imagens/Botoes/Botao_pre-triagem _e_triagem.png");
+	background-image: url("../imagens/Botoes/Botao_pre-triagem _e_triagem.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -272,7 +287,7 @@ html{
 }
 
 .botaoMedioEstatisticas{
-	background-image: url("..imagens/Botoes/Botao_estatisticas.png");
+	background-image: url("../imagens/Botoes/Botao_estatisticas.png");
 	background-repeat: no-repeat;
 	min-width: 210px;
 	min-height: 138px;
@@ -285,7 +300,7 @@ html{
 /* ------------------------------- Botões grandes ----------------------------------------*/
 
 .botaoCadastrarFuncionario{
-	background-image: url("..imagens/Botoes/Botao_cadastrar_funcionario.png");
+	background-image: url("../imagens/Botoes/Botao_cadastrar_funcionario.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -293,7 +308,7 @@ html{
 }
 
 .botaoRecepcao{
-	background-image: url("..imagens/Botoes/Botao_Recepcao.png");
+	background-image: url("../imagens/Botoes/Botao_Recepcao.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -301,7 +316,7 @@ html{
 }
 
 .botaoCadastrarDoador{
-	background-image: url("..imagens/Botoes/Botao_cadastrar_doador.png");
+	background-image: url("../imagens/Botoes/Botao_cadastrar_doador.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -309,7 +324,7 @@ html{
 }
 
 .botaoBuscarCadastros{
-	background-image: url("..imagens/Botoes/Botao_buscar_cadastro_de_doador.png");
+	background-image: url("../imagens/Botoes/Botao_buscar_cadastro_de_doador.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -317,7 +332,7 @@ html{
 }
 
 .botaoAgendarDoacao{
-	background-image: url("..imagens/Botoes/Botao_agendar_doacao.png");
+	background-image: url("../imagens/Botoes/Botao_agendar_doacao.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -325,7 +340,7 @@ html{
 }
 
 .botaoVisualizarAgendamentos{
-	background-image: url("..imagens/Botoes/Botao_visualizar_agendamentos.png");
+	background-image: url("../imagens/Botoes/Botao_visualizar_agendamentos.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -333,7 +348,7 @@ html{
 }
 
 .botaoRegistrarDoacao{
-	background-image: url("..imagens/Botoes/Botao_registrar_doacao.png");
+	background-image: url("../imagens/Botoes/Botao_registrar_doacao.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -341,7 +356,7 @@ html{
 }
 
 .botaoPreTriagem{
-	background-image: url("..imagens/Botoes/Botao_pre-triagem _e_triagem.png");
+	background-image: url("../imagens/Botoes/Botao_pre-triagem _e_triagem.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;
@@ -349,7 +364,7 @@ html{
 }
 
 .botaoEstatisticas{
-	background-image: url("..imagens/Botoes/Botao_estatisticas.png");
+	background-image: url("../imagens/Botoes/Botao_estatisticas.png");
 	background-repeat: no-repeat;
 	min-width: 271px;
 	min-height: 179px;

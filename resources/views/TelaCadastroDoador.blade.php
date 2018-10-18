@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<title>Cadastrar Doador - Sis Controle de Doadores</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
-    <script type="text/javascript" src="JScript.js"></script>
+    <script type="text/javascript" src="{{asset('js/JScript.js')}}"></script>
 
 </head>
 
@@ -16,8 +16,8 @@
 			<div id="cabecalho_pt2">
 				<h1 style="margin-top: 0px; margin-bottom: 0px; color: white;">Sistema de controle de doadores</h1>
 				<h2 style="margin-top: 0px; color: white">Cadastro de doador</h2>
-				<a href="TelaMenu.html" class="botaoInicio">Início</a>
-				<a href="TelaLogin.html" class="botaoSair">Sair</a>
+				<a href="{{Route('menu')}}" class="botaoInicio">Início</a>
+				<a href="{{Route('login')}}" class="botaoSair">Sair</a>
 			</div>
 		</div>
 	</header>
@@ -30,10 +30,10 @@
 	<!-- Campos -->
 	<div class="area_cadastro">
 		<div class="area_foto_cadastro">
-			<img src="Imagens\Icones\Doadores.png" style="border: solid 2px #cf0003;">
+			<img src="{{asset('imagens\Outros\Doadores.png')}}" style="border: solid 2px #cf0003;">
 		</div>
 		<div class="area_campos_cadastro">
-			<form name="camposDoador" action="" method="post">
+			<form name="camposDoador" action="{{Route('cadastrarDoador', ['id' => 1])}}" method="post">
 				{{csrf_field()}} <!-- Token para a comunicação do cliente com o servidor, para evitar ataque malicioso -->
 				<label>Nome*</label>
 				<input type="text" name="nomeDoador" class="camposCadastro" size="50">
@@ -99,13 +99,13 @@
 				<div class="erroCadastro"> 
 					<strong>Erro!</strong> 
 					@foreach ($errors->all() as  $error) <!-- Lista todos os erros -->
-					<p>$error</p>
+					<p>{{$error}}</p>
 					@endforeach
 				</div>
 				@endif
 
-				<input type="submit" value="Cadastrar doador" class="botoesSimples" style="margin-top: 20px; margin-right: 10px;" onclick="actionCadastroDoador('Cadastrar');"> <!-- onClick direcionando para uma função em javaScript para alterar o action do form -->
-				<input type="submit" value="Cadastrar doador e registrar doação" class="botoesSimples" style="margin-top: 20px;" onclick="actionCadastroDoador('Cadastrar e registrar');"> <!-- onClick direcionando para uma função em javaScript para alterar o action do form -->
+				<input type="submit" value="Cadastrar doador" class="botoesSimples" style="margin-top: 20px; margin-right: 10px;"> <!-- onClick direcionando para uma função em javaScript para alterar o action do form -->
+				<input type="submit" value="Cadastrar doador e registrar doação" class="botoesSimples" style="margin-top: 20px;"> <!-- onClick direcionando para uma função em javaScript para alterar o action do form -->
 			</form>
 		</div>
 	</div>

@@ -16,18 +16,18 @@
 			<div id="cabecalho_pt2">
 				<h1 style="margin-top: 0px; margin-bottom: 0px; color: white;">Sistema de controle de doadores</h1>
 				<h2 style="margin-top: 0px; color: white">Menu - Administração</h2>
-				<a href="TelaLogin.html" class="botaoSair">Sair</a>
+				<a href="{{Route('login')}}" class="botaoSair">Sair</a>
 			</div>
 		</div>
 	</header>
 
 	<!-- Botões -->
 	<div style="margin: 0 auto; width: 80%;">
-		<a href=""><div class="{{Route('recepcao')}}" style="margin-top: 30px; margin-left: 2%;"></div></a>
-		<a href=""><div class="botaoPreTriagem" style="margin-top: 30px; margin-left: 2%;"></div></a>
+		<a href="{{Route('recepcao')}}"><div class="botaoRecepcao" style="margin-top: 30px; margin-left: 2%;"></div></a>
 		<a href="{{Route('cadastroDoador')}}"><div class="botaoCadastrarDoador" style="margin-top: 30px; margin-left: 2%;"></div></a>
 		<a href="{{Route('cadastroFuncionario')}}"><div class="botaoCadastrarFuncionario" style="margin-top: 30px; margin-left: 2%;"></div></a>
 		<a href=""><div class="botaoBuscarCadastros" style="margin-top: 30px; margin-left: 2%;"></div></a>
+		<a href=""><div class="botaoAgendarDoacao" style="margin-top: 30px; margin-left: 2%;"></div></a>
 		<a href="{{Route('registroDoacao')}}"><div class="botaoRegistrarDoacao" style="margin-top: 30px; margin-left: 2%;"></div></a>
 		<a href=""><div class="botaoEstatisticas" style="margin-top: 30px; margin-left: 2%;"></div></a>
 		<br clear=“both”/>

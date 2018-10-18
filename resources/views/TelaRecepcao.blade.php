@@ -4,6 +4,7 @@
 	<meta charset="utf-8" />
 	<title>Recepção - Sis Controle de Doadores</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
+    <script type="text/javascript" src="{{asset('js/JScript.js')}}"></script>
 
 	<style type="text/css">
 		#conteudoEsquerda{
@@ -55,8 +56,8 @@
 			<div id="cabecalho_pt2">
 				<h1 style="margin-top: 0px; margin-bottom: 0px; color: white;">Sistema de controle de doadores</h1>
 				<h2 style="margin-top: 0px; color: white">Recepção</h2>
-				<a href="TelaMenu.html" class="botaoInicio">Início</a>
-				<a href="TelaLogin.html" class="botaoSair">Sair</a>
+				<a href="{{Route('menu')}}" class="botaoInicio">Início</a>
+				<a href="{{Route('login')}}" class="botaoSair">Sair</a>
 			</div>
 		</div>
 	</header>
@@ -65,6 +66,10 @@
 	<nav>
 		
 	</nav>
+
+	@if(session('notificacao')) <!-- Se essa página tiver vindo de um redirecionamento junto com a variável 'notificacao' -->
+	<div class="notificacao"><p>{{session('notificacao')}}</p></div> <!-- Então, mostre a notificacao -->
+	@endif
 
 	<!-- Conteudo -->
 	<div id="conteudoEsquerda">
@@ -120,8 +125,8 @@
 	<div id="conteudoDireita">
 		<!-- Botões -->
 		<div id="botoesRecepcao">
-			<a href="TelaCadastroDoador.html"><div class="botaoMedioCadastrarDoador" style="margin-bottom: 25px; margin-left: 10px;"></div></a>
-			<a href="TelaRegistroDoacao.html"><div class="botaoMedioRegistrarDoacao" style="margin-bottom: 25px; margin-left: 10px;"></div></a>
+			<a href="{{Route('cadastroDoador')}}"><div class="botaoMedioCadastrarDoador" style="margin-bottom: 25px; margin-left: 10px;"></div></a>
+			<a href="{{Route('registroDoacao')}}"><div class="botaoMedioRegistrarDoacao" style="margin-bottom: 25px; margin-left: 10px;"></div></a>
 			<a href=""><div class="botaoMedioBuscarCadastros" style="margin-bottom: 25px; margin-left: 10px;"></div></a>
 			<a href=""><div class="botaoMedioAgendarDoacao" style="margin-bottom: 25px; margin-left: 10px;"></div></a>
 			<a href=""><div class="botaoMedioVisualizarAgendamentos" style="margin-bottom: 25px; margin-left: 10px;"></div></a>

@@ -10,17 +10,17 @@ class DoadorController extends Controller
         return view ('TelaCadastroDoador');
     }
 
-    public function cadastrarDoador(Request $request,int $id){
+    public function cadastrarDoador(int $id, Request $request){
         $request->validate([
             'nomeDoador' => 'required|alpha|',
             'cpfDoador' => 'required|cpf|formato_cpf',
             'emailDoador' => 'email',
-            'telFixoDoador' => 'required_without:telCelDoador|telefone_com_ddd',
-            'telCelDoador' => 'required_without:telFixoDoador|celular_com_ddd', /* Só é obrigatório se o campo do telFixo não tiver sido preenchido */
+            'telFixoDoador' => 'required_without:telCelDoador',
+            'telCelDoador' => 'required_without:telFixoDoador', /* Só é obrigatório se o campo do telFixo não tiver sido preenchido */
             'cepDoador' => 'required|formato_cep',
             'logradouroDoador' => 'required|alpha',
             'numResidenciaDoador' => 'required|integer',
-            'dataNascimentoDoador' => 'required|date_format:"d/m/Y',
+            'dataNascimentoDoador' => 'required',
         ]);  
         /* \/ Só é executado se tiver passado na validação \/ */
         if($id == 1){
@@ -30,3 +30,19 @@ class DoadorController extends Controller
         }
     }
 }
+
+
+
+
+/* 
+            'nomeDoador' => 'required|alpha|',
+            'cpfDoador' => 'required|cpf|formato_cpf',
+            'emailDoador' => 'email',
+            'telFixoDoador' => 'required_without:telCelDoador|telefone_com_ddd',
+            'telCelDoador' => 'required_without:telFixoDoador|celular_com_ddd', Só é obrigatório se o campo do telFixo não tiver sido preenchido
+            'cepDoador' => 'required|formato_cep',
+            'logradouroDoador' => 'required|alpha',
+            'numResidenciaDoador' => 'required|integer',
+            'dataNascimentoDoador' => 'required|date_format:d/m/Y',
+
+*/

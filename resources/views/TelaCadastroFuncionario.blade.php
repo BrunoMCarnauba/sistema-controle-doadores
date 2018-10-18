@@ -15,8 +15,8 @@
 			<div id="cabecalho_pt2">
 				<h1 style="margin-top: 0px; margin-bottom: 0px; color: white;">Sistema de controle de doadores</h1>
 				<h2 style="margin-top: 0px; color: white">Cadastro de funcionário</h2>
-				<a href="TelaMenu.html" class="botaoInicio">Início</a>
-				<a href="TelaLogin.html" class="botaoSair">Sair</a>
+				<a href="{{Route('menu')}}" class="botaoInicio">Início</a>
+				<a href="{{Route('login')}}" class="botaoSair">Sair</a>
 			</div>
 		</div>
 	</header>
@@ -31,7 +31,7 @@
 		<form action="{{Route('cadastrarFuncionario')}}" method="post" enctype="multipart/form-data">
 			{{csrf_field()}} <!-- Token para a comunicação do cliente com o servidor, para evitar ataque malicioso -->
 			<div class="area_foto_cadastro">
-				<img src="Imagens\Icones\Funcionario_Icone_250x336.png" style="border: solid 2px #cf0003;">
+				<img src="{{asset('Imagens\Outros\Funcionario_Icone_250x336.png')}}" style="border: solid 2px #cf0003;">
 				<br/>
 					<input type="file" name="fotoFuncionario">
 			</div>
@@ -58,6 +58,7 @@
 				<label>Cargo*</label>
 				<select name="cargoFunc" class="camposCadastro">
 					<option value='Selecione'>Selecione</option>
+					<option value='Administrador'>Administrador</option>
 				</select>
 				<label>Salário*</label>
 				<input type="number" name="salarioFunc" class="camposCadastro" style="width: 100px;">
@@ -101,7 +102,7 @@
 				<input type="password" name="confirmaSenhaFunc" class="camposCadastro">
 				<br/>
 
-				@if ($errrors->any()) <!-- Checa se houve erros -->
+				@if ($errors->any()) <!-- Checa se houve erros -->
 				<div class="erroCadastro"> 
 					<strong>Erro!</strong> 
 					@foreach ($errors->all() as  $error) <!-- Lista todos os erros -->
