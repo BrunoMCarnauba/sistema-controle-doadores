@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class FuncionarioController extends Controller
 {
     public function menu(){
-        return view('TelaMenu');
+        return view ('TelaMenu');
     }
 
     public function recepcao(){
