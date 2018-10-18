@@ -1,0 +1,395 @@
+
+body{
+	margin: 0;
+	padding: 0;
+	background-color: #f6ebeb;
+	border-color: #f6ebeb;
+	height: 100%;
+}
+
+/* Parte do processo para deixar o rodapé sempre no fim \/ */
+html{
+	height: 100%;
+}
+
+.geral{
+	min-height: 100%;
+	min-width: 100%;
+	position: relative;
+}
+/* -- */
+
+#cabecalho_pt1{
+	background-color: #cf0003; 
+	height: 80px;
+}
+
+#cabecalho_pt2{
+	width: 50%; 
+	margin-left: 25%; /*Pra ficar no meio: 50% do espaço no meio e 25% em cada lado*/
+	background-color: #aa0002;
+	height: 80px; 
+	text-align: center;
+	min-width: 451px; /*Para as palavras cortarem, mas não desaparecerem se for um tamanho menor*/
+}
+
+#rodape{
+	height: 20px;
+	width: 100%;
+	background-color: #cf0003;
+	margin-top: 12px;
+	position: absolute;
+	bottom: 0;
+}
+
+/* Telas cadastro doador/funcionário --------------------------------------- */
+
+.area_foto_cadastro{
+	margin-top: 33px;
+	/*Coloquei position e não float pois queria que ele pudesse "entrar" dentro de uma parte da largura do area_campos sem que os campos descessem (como aconteceria no float, que não permitira essa entrada), 
+	quando ultrapassasse uma parte, então eu mudo para float, pra os campos descerem. */
+	position: absolute; 
+	left: 64%; /*Pra ficar lá na direita */
+	text-align: center;
+}
+
+.area_campos_cadastro{
+	margin-top: 20px;
+	margin-left: 24%;
+	/* Flutuar na esquerda e permitir que outros objetos fiquem na sua direita, sem invadir sua largura 
+	(ficam ao lado se a largura dos outros objetos couberem na tela, se não, os objetos ficam em baixo) */
+	float: left;
+	width: 700px;
+	margin-bottom: 40px;
+}
+
+@media (max-width: 1090px){ /* Se o tamanho da tela for até 1090px, então sobrescreva .area_foto_cadastr
+   Pra quando diminuir a tela, os campos descerem e a foto ir logo para a 
+   esquerda, ao invés dos campos descerem e a foto continuar na direita e ir indo pra esquerda aos poucos. */
+	.area_foto_cadastro{
+		position: static;
+		float: left;
+		margin-left: 35%;
+	}
+	.area_campos_cadastro{
+		width: 465px; /*Mudei a largura para  que o 2º botão (que ficava ao lado do primeiro) na tela de doador, desça */
+	}
+}
+
+.erroCadastro{
+	background-color: #aa0002;
+	max-width: 700px;
+	min-width: 202px;
+	color: white; /* Cor da fonte */
+	padding: 10px 15px; /* Padding para top e bottom, e left e right*/
+	border-radius: 5px; /* Cria curva para as bordas */
+	margin-top: 20px;
+}
+
+.erroCadastro p{  /* Alterar apenas os parágrafos do .erroCadastro */
+	line-height: 0px; /* Para tirar espaçamento dos parágrafos */
+}
+
+/* ------------------------------------------------------------------------------ */
+
+/* Campos */
+.camposCadastro{
+	margin-top: 10px;
+	height: 25px;
+}
+
+/* Filas e informações do doador --------------------------------------------------*/
+.retanguloTitulo{
+	height: 25px;
+	width: 590px;
+	background-color: #cf0003; 
+	color: white; /* Cor das letras */
+	font-size: 18pt;
+	font-weight: bold; /* Negrito */
+	text-align: center;
+	line-height: 25px; /* Controla o espaçamento entre as linhas de um texto. */
+}
+
+.retanguloConteudo{
+	height: 108px;
+	width: 590px;
+	background-color: #f4dbdb;
+	line-height: 25px;
+}
+
+.retanguloConteudo p{ /* Alterando apenas os conteúdos com tag <p> de dentro da div oom class="retanguloConteudoFila" */
+	font-size: 20px;
+	margin: 0px 0px 3px 3px;
+}
+
+.retanguloRodape{
+	height: 30px;
+	width: 590px;
+	background-color: #efbbbb;
+}
+
+/* ------------------------------------------------------------------------------ */
+
+/* Botões */
+
+.botoesSimples{
+	background-color: #cf0003;
+	font-size: 25px;
+	color:white;
+	padding-left:20px;
+	padding-right:20px;
+}
+
+.botoesSimplesv2{
+	background-color: #cf0003;
+	font-size: 20px;
+	color:white;
+	padding-left:15px;
+	padding-right:15px;	
+}
+
+.botoesSimplesMaior{
+	background-color: #cf0003;
+	font-size: 20px;
+	color:white;
+	padding-left:15px;
+	padding-right:15px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.botaoSair{
+	position: absolute;
+	top: 50px; 
+	right: 12%;
+	font-size: 20px;
+	color: white;
+	text-decoration: none;
+}
+
+.botaoInicio{
+	position: absolute;
+	top: 50px; 
+	right: 16%;
+	font-size: 20px;
+	color: white;
+	text-decoration: none;	
+}
+
+/* ------------------------------- Botões filas ---------------------------------------- */
+.botaoChamarDoadorDaFila{
+	background-image: url("{{asset('imagens/Botoes/Botao_chamar_doador.png')}}"); 
+	background-repeat: no-repeat;
+	min-width: 158px;
+	min-height: 25px;
+}
+.botaoRemoverDaFila{
+	background-image: url("{{asset('imagens/Botoes/Botao_remover_da_fila.png')}}"); 
+	background-repeat: no-repeat;
+	min-width: 158px;
+	min-height: 25px;
+}
+.botaoTrocarPosicaoDaFila{
+	background-image: url("{{asset('imagens/Botoes/Botao_trocar_posicao.png')}}"); 
+	background-repeat: no-repeat;
+	min-width: 158px;
+	min-height: 25px;
+}
+
+/* ------------------------------- Botões médios ----------------------------------------*/
+
+
+.botaoMedioCadastrarFuncionario{
+	background-image: url("{{asset('imagens/Botoes/Botao_cadastrar_funcionario.png')}}");
+	background-repeat: no-repeat;
+	min-width: 210px;
+	min-height: 138px;
+	background-size: 209px;
+	float: left;	
+}
+
+.botaoMedioRecepcao{
+	background-image: url("{{asset('imagens/Botoes/Botao_Recepcao.png')}}");
+	background-repeat: no-repeat;
+	min-width: 210px;
+	min-height: 138px;
+	background-size: 209px;
+	float: left;
+}
+
+.botaoMedioCadastrarDoador{
+	background-image: url("{{asset('imagens/Botoes/Botao_cadastrar_doador.png')}}");
+	background-repeat: no-repeat;
+	min-width: 210px;
+	min-height: 138px;
+	background-size: 209px;
+	float: left;
+}
+
+.botaoMedioBuscarCadastros{
+	background-image: url("{{asset('imagens/Botoes/Botao_buscar_cadastro_de_doador.png')}}");
+	background-repeat: no-repeat;
+	min-width: 210px;
+	min-height: 138px;
+	background-size: 209px;
+	float: left;
+}
+
+.botaoMedioAgendarDoacao{
+	background-image: url("{{asset('imagens/Botoes/Botao_agendar_doacao.png')}}");
+	background-repeat: no-repeat;
+	min-width: 210px;
+	min-height: 138px;
+	background-size: 209px;
+	float: left;
+}
+
+.botaoMedioVisualizarAgendamentos{
+	background-image: url("{{asset('imagens/Botoes/Botao_visualizar_agendamentos.png')}}");
+	background-repeat: no-repeat;
+	min-width: 210px;
+	min-height: 138px;
+	background-size: 209px;
+	float: left;
+}
+
+.botaoMedioRegistrarDoacao{
+	background-image: url("{{asset('imagens/Botoes/Botao_registrar_doacao.png')}}");
+	background-repeat: no-repeat;
+	min-width: 210px;
+	min-height: 138px;
+	background-size: 209px;
+	float: left;
+}
+
+.botaoMedioPreTriagem{
+	background-image: url("{{asset('imagens/Botoes/Botao_pre-triagem _e_triagem.png')}}");
+	background-repeat: no-repeat;
+	min-width: 210px;
+	min-height: 138px;
+	background-size: 209px;
+	float: left;
+}
+
+.botaoMedioEstatisticas{
+	background-image: url("{{asset('imagens/Botoes/Botao_estatisticas.png')}}");
+	background-repeat: no-repeat;
+	min-width: 210px;
+	min-height: 138px;
+	background-size: 209px;
+	float: left;
+}
+
+
+
+/* ------------------------------- Botões grandes ----------------------------------------*/
+
+.botaoCadastrarFuncionario{
+	background-image: url("{{asset('imagens/Botoes/Botao_cadastrar_funcionario.png')}}");
+	background-repeat: no-repeat;
+	min-width: 271px;
+	min-height: 179px;
+	float: left;	
+}
+
+.botaoRecepcao{
+	background-image: url("{{asset('imagens/Botoes/Botao_Recepcao.png')}}");
+	background-repeat: no-repeat;
+	min-width: 271px;
+	min-height: 179px;
+	float: left;
+}
+
+.botaoCadastrarDoador{
+	background-image: url("{{asset('imagens/Botoes/Botao_cadastrar_doador.png')}}");
+	background-repeat: no-repeat;
+	min-width: 271px;
+	min-height: 179px;
+	float: left;
+}
+
+.botaoBuscarCadastros{
+	background-image: url("{{asset('imagens/Botoes/Botao_buscar_cadastro_de_doador.png')}}");
+	background-repeat: no-repeat;
+	min-width: 271px;
+	min-height: 179px;
+	float: left;
+}
+
+.botaoAgendarDoacao{
+	background-image: url("{{asset('imagens/Botoes/Botao_agendar_doacao.png')}}");
+	background-repeat: no-repeat;
+	min-width: 271px;
+	min-height: 179px;
+	float: left;
+}
+
+.botaoVisualizarAgendamentos{
+	background-image: url("{{asset('imagens/Botoes/Botao_visualizar_agendamentos.png')}}");
+	background-repeat: no-repeat;
+	min-width: 271px;
+	min-height: 179px;
+	float: left;
+}
+
+.botaoRegistrarDoacao{
+	background-image: url("{{asset('imagens/Botoes/Botao_registrar_doacao.png')}}");
+	background-repeat: no-repeat;
+	min-width: 271px;
+	min-height: 179px;
+	float: left;
+}
+
+.botaoPreTriagem{
+	background-image: url("{{asset('imagens/Botoes/Botao_pre-triagem _e_triagem.png')}}");
+	background-repeat: no-repeat;
+	min-width: 271px;
+	min-height: 179px;
+	float: left;
+}
+
+.botaoEstatisticas{
+	background-image: url("imagens/Botoes/Botao_estatisticas.png");
+	background-repeat: no-repeat;
+	min-width: 271px;
+	min-height: 179px;
+	float: left;
+}
+
+/* Menu de navegação - Em construção*/
+
+.menuNav{
+
+	background-color: #cf0003;
+	min-width: 30%;
+	height: 40px; /* Altura de todo o menu */
+	width: 100%; /* Largura de todo o menu */
+}
+
+.menuNav a{ /* Alterar todos os hiperlinks de dentro do menuNav */
+	text-decoration: none;
+	color: white;
+}
+
+.menuPrimario li{ /* Alterando o 1º <li> menuPrimario */
+	width: 200px; /* Largura de cada <li> */
+	font-size: 15;
+	background-color: #cf0003;
+	color: white;
+	/*float: left; */
+	text-align: center;
+	line-height: 40px; /* Alinha na vertical */
+	border-right: solid 1px white;
+
+	display: inline-block;
+}
+
+.subMenu{
+	border-top: solid 1px white;
+	display: none;
+	padding: 0px;
+}
+
+.menuPrimario li:hover > .subMenu{ /*Quando o 1º <li> que está dentro do 1º <ul> do menuPrimario for clicado, alterar o subMenu */
+	display: block;
+}
