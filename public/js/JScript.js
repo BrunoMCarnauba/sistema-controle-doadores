@@ -30,4 +30,28 @@ window.onload = function() {
         o[0].style.display = 'none';
         
     }, 5000); // O tempo em milisegundos. 1 segundo = 1000 milisegundos.
+
+    //Quando o valor da combo de estado alterar ele vai executar essa linha. Obs: Usa JQuery.
+    //https://github.com/lorysz/dropdown-dinamica-php/blob/master/combo%20estado-cidade.txt
+    $('#select_estados').change(function () {
+        //armazenando o "value" do select que contém a sigla do estado
+        var siglaEstado = document.getElementById("select_estados").value;
+            if(siglaEstado!="Selecione"){ // Se tiver selecionado realmente um estado.
+                //Chama a URL carregar-cidades-de-{siglaEstado}, mandando a siglaDoEstado via GET. Ela chamará um método do controller de cidade.
+                 $.get('/carregar-cidades-de-' + siglaEstado, function (cidades) { //Recebe o html montado de cada cidade
+                    //Remove as options do select com id "#select_cidades" que já estão presentes. (Pra evitar que ao selecionar outro estado, as options do estado passado continuem.)
+                    $('#select_cidades').find("option").remove();
+                    //montando a combo da cidade
+                    $('#select_cidades').append(cidades);
+                });
+            }else{ // Se tiver selecionado o option "Selecione".
+                $('#select_cidades').find("option").remove();
+                $('#select_cidades').append("<option value=\"Selecione\">Selecione</option>");
+            }
+    });
+
 };
+
+
+
+    

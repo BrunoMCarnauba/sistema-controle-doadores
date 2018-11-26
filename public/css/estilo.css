@@ -55,7 +55,14 @@ html{
 	margin-top: 12px;
 	position: fixed; /* Preciso corrigir o rodapé. Mudar essa posição fixed, usar outra, preciso pesquisar como fazer o rodapé. */
 	bottom: 0;
+	color: white;
+	font-size: 13pt;
 }
+
+#rodape p{
+	display: inline; /*Um elemento in-line não inicia em uma nova linha e ocupa apenas a largura necessária.*/
+}
+
 
 /* Telas cadastro doador/funcionário --------------------------------------- */
 
@@ -113,7 +120,11 @@ html{
 	height: 25px;
 }
 
-/* Filas e informações do doador --------------------------------------------------*/
+.labelRegistro{
+	font-size: 14pt;
+}
+
+/* Filas, informações do doador e outros retângulos -------------------------------*/
 .retanguloTitulo{
 	height: 25px;
 	width: 590px;
@@ -141,6 +152,76 @@ html{
 	height: 30px;
 	width: 590px;
 	background-color: #efbbbb;
+}
+
+
+/*\/Que informa a quantidade de doadores na fila\/*/
+.retanguloTituloMenor{
+	height: 25px;
+	width: 420px;
+	background-color: #cf0003; 
+	color: white; /* Cor das letras */
+	font-size: 18pt;
+	font-weight: bold; /* Negrito */
+	text-align: center;
+	line-height: 25px; /* Controla o espaçamento entre as linhas de um texto. */
+}
+
+.retanguloConteudoMenor{
+	height: 108px;
+	width: 420px;
+	background-color: #f4dbdb;
+}
+
+.retanguloConteudoMenor ul{
+	margin-top: 0px;
+	padding-top: 8px;
+}
+
+.retanguloQtdFila{
+	background-color: #cf0003;
+	font-size: 17pt;
+	color: white;
+	font-weight: bold; /* Negrito */
+	padding: 7px 20px 7px 20px;
+	float: left; /* Para os parágrafos e labels ficarem um do lado do outro */
+	clear:both; /*Para o conjunto abaixo (QtdFila + NomeFila) não fique ao lado do de cima e sim embaixo*/
+	margin: 7px 0px 0px 8px;
+}
+
+.retanguloNomeFila{
+	background-color: #f3d1d1;
+	font-size: 20px;
+	width: 330px; /*Para o quadrado ficar dessa largura*/
+	padding: 8px 0px 8px 9px;
+	float: left; /* Para os parágrafos e labels ficarem um do lado do outro */
+	margin: 7px 0px 0px 0px;
+}
+
+.retanguloBusca{
+	padding: 10px 10px 10px 13px;
+	background-color: #f4dbdb;
+	float: left;
+}
+
+.retanguloNomeResultado{
+	background-color: #f4dbdb;
+	padding: 10px 10px 10px 5px;
+	font-size: 14pt;
+	min-width: 275px; /* Largura reescrita no arquivo html */
+	max-width: 275px; /* Largura reescrita no arquivo html */
+	float: left;
+	clear: both; /*Para cancelar float do componente a cima */
+}
+
+.retanguloBotoesResultado{
+	background-color: #f0c9c9;
+	border-left: solid;
+	border-color: #edb4b4;
+	border-width: 2px;
+	min-width: 311px; /* Largura reescrita no arquivo html */
+	height: 41px;
+	float: left;
 }
 
 /* ------------------------------------------------------------------------------ */
@@ -189,6 +270,27 @@ html{
 	font-size: 20px;
 	color: white;
 	text-decoration: none;	
+}
+
+.botaoBuscar{
+	background-color: #cf0003; 
+	color: white;
+	background-repeat: no-repeat;
+	min-height: 46px;
+}
+
+.botaoVerHistorico{
+	background-image: url("../imagens/Botoes/Botao_ver_historico.png"); 
+	background-repeat: no-repeat;
+	min-width: 145px;
+	min-height: 25px;
+}
+
+.botaoVerCadastro{
+	background-image: url("../imagens/Botoes/Botao_ver_cadastro.png");
+	background-repeat: no-repeat;
+	min-width: 145px;
+	min-height: 25px;
 }
 
 /* ------------------------------- Botões filas ---------------------------------------- */

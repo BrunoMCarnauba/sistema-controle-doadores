@@ -57,7 +57,7 @@
 				<h1 style="margin-top: 0px; margin-bottom: 0px; color: white;">Sistema de controle de doadores</h1>
 				<h2 style="margin-top: 0px; color: white">Recepção</h2>
 				<a href="{{Route('menu')}}" class="botaoInicio">Início</a>
-				<a href="{{Route('login')}}" class="botaoSair">Sair</a>
+				<a href="{{url('logout')}}" class="botaoSair">Sair</a>
 			</div>
 		</div>
 	</header>
@@ -135,10 +135,11 @@
 	</div>	
 
 	<!-- Rodapé -->
-	<footer style="clear:both">
-		<div id="rodape"></div>
+	<footer>
+		<div id="rodape">
+			<p style="margin-left: 10px;">Usuário: {{session('usuario')}}</p>
+		</div>
 	</footer>
-</div>
 
 </body>
 </html>

@@ -11,6 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /* Ao executar o comando "php artisan db:seed", serão executadas todas as seeds inseridas nesse método. */
         // $this->call(UsersTableSeeder::class);
+        $this->call(CargosSeeder::class);
+        $this->call(EstadosSeeder::class);
+        $this->call(CidadesSeeder::class);
+        $this->call(EnderecosSeeder::class);
+        $this->call(FuncionariosSeeder::class);
     }
 }

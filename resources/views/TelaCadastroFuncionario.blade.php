@@ -4,6 +4,9 @@
 	<meta charset="utf-8" />
 	<title>Cadastrar Funcionário - Sis Controle de Doadores</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
+	<script type="text/javascript" src="{{asset('js/JScript.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/endereco.js')}}"></script>
 
 </head>
 
@@ -38,68 +41,72 @@
 
 			<div class="area_campos_cadastro">
 				<label>Nome*</label>
-				<input type="text" name="nomeFunc" class="camposCadastro" size="50">
+				<input type="text" name="nome" class="camposCadastro" size="50">
 				<br/>
 				<label>CPF*</label>
-				<input type="text" name="cpfFunc" class="camposCadastro">
+				<input type="text" name="cpf" class="camposCadastro" size="15" maxlength="14">
 				<br/>
 				<label>Email*</label>
-				<input type="email" name="emailFunc" class="camposCadastro">
+				<input type="email" name="email" class="camposCadastro">
 				<br/>
 				<label>Telefone fixo</label>
-				<input type="text" name="telFixoFunc" class="camposCadastro">
+				<input type="text" name="telefoneFixo" class="camposCadastro">
 				<br/>
 				<label>Telefone celular</label>
-				<input type="text" name="telCelFunc" class="camposCadastro">
+				<input type="text" name="telefoneCelular" class="camposCadastro">
 				<br/>
 				<label>Data de admissão</label>
-				<input type="date" name="dataAdmissaoFunc" class="camposCadastro">
+				<input type="date" name="dataAdmissao" class="camposCadastro">
 				<br/>
 				<label>Cargo*</label>
-				<select name="cargoFunc" class="camposCadastro">
+				<select name="cargo" class="camposCadastro">
 					<option value='Selecione'>Selecione</option>
-					<option value='Administrador'>Administrador</option>
+					@foreach ($cargos as $cargo) <!-- Existem vários cargos, em cada repetição ele pega um cargo e cria a <option> com o nome dele -->
+						<option value="{{$cargo->id_cargo}}">{{$cargo->nome}}</option>
+					@endforeach
 				</select>
-				<label>Salário*</label>
-				<input type="number" name="salarioFunc" class="camposCadastro" style="width: 100px;">
 				<br/>
 				<label>CEP*</label>
-				<input type="text" name="cepFunc" class="camposCadastro">
+				<input type="text" name="cep" class="camposCadastro" size="10" maxlength="9" onblur="pesquisacep(this.value);">
 				<br/>
 				<label>Estado</label>
-				<select name="estadoFunc" class="camposCadastro">
-					<option value='AL'>AL</option>
+				<select id="select_estados" name="estado" class="camposCadastro">
+						<option value="Selecione">  </option>
+					@foreach ($estados as $estado) <!-- Existem vários estados, em cada repetição ele pega um estado e cria a <option> com a sigla dele -->
+						<option value="{{$estado->sigla}}">{{$estado->sigla}}</option>
+					@endforeach
 				</select>
 				<label>Cidade</label>
-				<select name="cidadeFunc" class="camposCadastro">
-					<option value='Maceió'>Maceió</option>
+				<!-- O select "select_cidades" é controlado pelo javaScript "endereco.js" -->
+				<select id="select_cidades" name="cidade" class="camposCadastro">
+					<option value='Selecione'>Selecione</option>
 				</select>
 				<br/>
 				<label>Logradouro</label>
-				<input type="text" name="logradouroFunc" class="camposCadastro">
+				<input id="logradouro" type="text" name="logradouro" class="camposCadastro">
 				<label>Nº Residência</label>
-				<input type="text" name="numResidenciaFunc" class="camposCadastro" size="3">
+				<input type="text" name="numeroResidencia" class="camposCadastro" size="3">
 				<br/>
 				<label>Complemento</label>
-				<input type="text" name="complementoFunc" class="camposCadastro">
+				<input type="text" name="complemento" class="camposCadastro">
 				<br/>
 				<label>Data de nascimento*</label>
-				<input type="date" name="dataNascimentoFunc" class="camposCadastro">
+				<input type="date" name="dataNascimento" class="camposCadastro">
 				<br/>
 				<label>Sexo*</label>
-				<select name="sexoFunc" class="camposCadastro">
+				<select name="sexo" class="camposCadastro">
 					<option value='M'>Masculino</option>
 					<option value='F'>Feminino</option>
 					<option value='O'>Outro</option>
 				</select>
 				<br/>
 				<label>Usuário*</label>
-				<input type="text" name="usuarioFunc" class="camposCadastro">
+				<input type="text" name="usuario" class="camposCadastro">
 				<label>Senha*</label>
-				<input type="password" name="senhaFunc" class="camposCadastro">
+				<input type="password" name="senha" class="camposCadastro">
 				<br/>
 				<label>Confirmação senha*</label>
-				<input type="password" name="confirmaSenhaFunc" class="camposCadastro">
+				<input type="password" name="confirmaSenha" class="camposCadastro">
 				<br/>
 
 				@if ($errors->any()) <!-- Checa se houve erros -->
