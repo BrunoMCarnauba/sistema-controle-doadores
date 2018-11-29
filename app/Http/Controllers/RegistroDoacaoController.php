@@ -38,19 +38,24 @@ class RegistroDoacaoController extends Controller
         $doador = new Doador;
 
         //OBS: Falta fazer checagem se já existe doador com o mesmo cpf com registro de doação ativo.
-        $registroDoacao->doador_id = $doador->buscarDoadorPorCPF($request->cpfDoador)->id_doador; //Preenchendo model
-        $registroDoacao->tipo_doacao = $request->tipoDoacao;
-        $registroDoacao->status_registro = "Aguardando pré-triagem";
-        $registroDoacao->save();    //Salvando no banco de dados
+        $doador = $doador->buscarDoadorPorCPF($request->cpfDoador);
+        if($doador != null){
+            $registroDoacao->doador_id = $doador->id_doador; //Preenchendo model
+            $registroDoacao->tipo_doacao = $request->tipoDoacao;
+            $registroDoacao->status_registro = "Aguardando pré-triagem";
+            $registroDoacao->save();    //Salvando no banco de dados
 
-        if($request->tipoDoacao == "Doação de sangue"){ //Colocando na fila de espera para triagem
-            $filaTriagem = new FilaTriagem; //Instanciando Model
-            $filaTriagem->adicionarDoadorFila($registroDoacao->id); //Adicionando doador de determinado registro de doação à fila
+            if($registroDoacao->tipo_doacao == "Doação de sangue"){ //Colocando na fila de espera para triagem
+                $filaTriagem = new FilaTriagem; //Instanciando Model
+                $filaTriagem->adicionarDoadorFila($registroDoacao->id); //Adicionando doador de determinado registro de doação à fila
 
-            return redirect()->route('recepcao')->with('notificacao','Doação registrada com sucesso.');
-        } else { //Se for doação de medula óssea deve agendar
-            //Redirecionando para a tela de agendamento
-            return redirect()->route('recepcao')->with('notificacao','Necessário agendar doação.');
+                return redirect()->route('recepcao')->with('notificacao','Doação registrada com sucesso.');
+            } else { //Se for doação de medula óssea deve agendar
+                //Redirecionando para a tela de agendamento
+                return redirect()->route('recepcao')->with('notificacao','Necessário agendar doação.');
+            }
+        } else {
+            return redirect()->route('recepcao')->with('erroBusca','Necessário agendar doação.');
         }
 
         /* Precisa fazer a div aumentar a altura automaticamente, pra poder por: return redirect()->route('recepcao')->with('notificacao','Doação registrada com sucesso.<br/>Doador adicionado à fila de espera para triagem.'); */

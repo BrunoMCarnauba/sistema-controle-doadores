@@ -12,5 +12,9 @@ class Funcionario extends Model
     protected $table = 'funcionarios'; /* Nome da tabela do banco */
     /* protected $fillable = ['cpf', 'nome', 'email', 'telefone_fixo', 'telefone_celular', 'data_nascimento', 'data_admissao', 'cargo_id', 'endereco_id', 'sexo', 'usuario', 'senha', 'foto']; /* Quais colunas que podem ser preenchidas pelo usuário do sistema no Banco. Importante pra usar o comando Funcionario::create($request->all()); */
     
+    public function autenticarFuncionario($usuario, $senha){
+        $funcionario = DB::select('select \'nome\' from funcionarios where usuario = ? and senha = ?', [$usuario,$senha]);
+        return $funcionario;
+    }
 
 }

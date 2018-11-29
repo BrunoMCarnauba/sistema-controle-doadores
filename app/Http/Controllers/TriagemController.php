@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Triagem;
+use App\Models\FilaDoadorSangue;
+use App\Models\FilaDoadorMedulaOssea;
 
 class TriagemController extends Controller
 {
@@ -11,23 +13,35 @@ class TriagemController extends Controller
         return view ('TelaTriagem');
     }
 
-    public function aprovarTriagem(Request $request){
-        $registroDoacao = new RegistroDoacao;
-        $registroDoacao = $registroDoacao->buscarRegistroDoacao($id_registro_doacao);
-        $triagem->doador_id = $registroDoacao->doador_id;
-        $triagem->aprovacao = "true";
+    public function registrarTriagem(Request $request){
+        $triagem = new Triagem;
+        $id_registro_doacao = $request->session()->get('infosDoador')['id_registro_doacao']; //Pega o id_registro_doacao que está na sessão infosDoador 
+        $id_doador = $request->session()->get('infosDoador')['id_doador']; //Pega o id_doador que está na sessão infosDoador 
+        $triagem->doador_id = $id_doador;
         $triagem->observacoes = $request->observacoes;
 
-        return redirect()->route('recepcao')->with('notificacao', 'Triagem registrada. Doador aprovado.');
-    }
+        if($request->aprovacao == "Aprovar"){
+            $triagem->aprovacao = true;
+            $triagem->registrarTriagem($triagem,$id_registro_doacao);
 
-    public function reprovarTriagem(Request $request){
-        $registroDoacao = new RegistroDoacao;
-        $registroDoacao = $registroDoacao->buscarRegistroDoacao($id_registro_doacao);
-        $triagem->doador_id = $registroDoacao->doador_id;
-        $triagem->aprovacao = "false";
-        $triagem->observacoes = $request->observacoes;
+            $tipoDoacao = $request->session()->get('infosDoador')['tipo_doacao'];
 
-        return redirect()->route('recepcao')->with('notificacao', 'Triagem registrada. Doador reprovado.');
+            if($tipoDoacao == "Doação de sangue"){
+                $filaDoadorSangue = new FilaDoadorSangue;
+                $filaDoadorSangue->adicionarDoadorFila($id_registro_doacao);
+            } else if ($tipoDoacao == "Doação de medula óssea"){
+                $filaDoadorMedulaOssea = new FilaDoadorMedulaOssea;
+                $filaDoadorMedulaOssea->adicionarDoadorFila($id_registro_doacao);
+            }
+    
+            $request->session()->forget('infosDoador'); //A sessão infosDoador é apagada, pois não precisará usá-la na próxima página
+            return redirect()->route('recepcao')->with('notificacao', 'Triagem registrada. Doador aprovado.');    
+        } else if ($request->aprovacao == "Reprovar"){
+            $triagem->aprovacao = false;
+            $triagem->registrarTriagem($triagem,$id_registro_doacao);        
+    
+            $request->session()->forget('infosDoador'); //A sessão infosDoador é apagada, pois não precisará usá-la na próxima página
+            return redirect()->route('recepcao')->with('notificacao', 'Triagem registrada. Doador reprovado.');
+        }
     }
 }

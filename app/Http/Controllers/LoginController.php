@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Funcionario;
 
 class LoginController extends Controller
 {
@@ -11,8 +12,10 @@ class LoginController extends Controller
     }
 
     public function logar(Request $request){
-        if($request->usuarioLogin == 'Teste' && $request->senhaLogin == '123'){
-            $request->session()->put('usuario', 'Teste'); /*“variável” que se manterá ativa mesmo ao mudar de página ou sair da página. */
+        $funcionario = new Funcionario;
+        $funcionario = $funcionario->autenticarFuncionario($request->usuarioLogin,$request->senhaLogin);
+        if ($funcionario != null){
+            $request->session()->put('usuario', $funcionario[0]->nome); /*“variável” que se manterá ativa mesmo ao mudar de página ou sair da página. */
            return redirect()->route('menu'); /* Redireciona para a rota de nome 'menu'. */
         } else {
             return redirect()->route('login')->with('erro','Usuário ou senha inválido'); /* Redireciona para determinada rota e envia junto a variável erro com sua descrição para a página*/

@@ -4,10 +4,11 @@
 	<meta charset="utf-8" />
 	<title>Registrar doação - Sis Controle de Doadores</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
-    <script type="text/javascript" src="{{asset('js/geral.js')}}"></script>
+	
 	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/registroDoacao.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/filas.js')}}"></script>
+    <!-- <script type="text/javascript" src="{{asset('js/geral.js')}}"></script> -->
+	<!-- <script type="text/javascript" src="{{asset('js/filas.js')}}"></script> -->
 
 	<style type="text/css">
 
@@ -80,7 +81,7 @@
 			</form>
 
 			@if ($errors->any()) <!-- Checa se houve erros -->
-			<div class="erroCadastro"> 
+			<div class="erroCadastro" style="max-width: 560px;"> 
 				<strong>Erro!</strong> 
 				@foreach ($errors->all() as  $error) <!-- Lista todos os erros -->
 				<p>{{$error}}</p>
@@ -89,10 +90,18 @@
 			@endif
 
 			<!-- O display da div erroBusca (que permite deixá-la invisível) é controlado pelo javaScript registroDoacao.js -->
-			<div id="erroBusca" class="erroCadastro" style="display: none;"> 
+			<div id="erroBusca" class="erroCadastro" style="display: none; max-widht: 560px;"> 
 				<strong>Erro!</strong> 
 				<p>Não existe doador cadastrado com o cpf digitado</p>
 			</div>
+
+			<!-- OBSERVAÇÃO: Reduzir essas divs de erro de doador não cadastrado em uma só Div -->
+			@if(session('erroBusca')) <!-- Se essa página tiver vindo de um redirecionamento junto com a variável 'notificacao' -->
+			<div class="erroCadastro" style="max-widht: 560px;"> 
+					<strong>Erro!</strong> 
+					<p>Não existe doador cadastrado com o cpf digitado</p>
+			</div>
+			@endif
 
 		</div>
 

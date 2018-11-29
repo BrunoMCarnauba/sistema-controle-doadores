@@ -4,9 +4,11 @@
 	<meta charset="utf-8" />
 	<title>Recepção - Sis Controle de Doadores</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
-    <script type="text/javascript" src="{{asset('js/geral.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/filas.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/recepcao.js')}}"></script>
+	
+    <!-- <script type="text/javascript" src="{{asset('js/geral.js')}}"></script> -->
+	<!-- <script type="text/javascript" src="{{asset('js/filas.js')}}"></script> -->
 
 	<style type="text/css">
 		#conteudoEsquerda{

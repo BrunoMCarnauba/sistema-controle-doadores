@@ -40,14 +40,12 @@ class FilaDoadorSangue extends Model
     public function chamarDoadorFila(){
         $filaDoadorSangue = new FilaDoadorSangue;
         if(($filaDoadorSangue->totalNaFila())>0){
-            $dadosDoadorChamado = DB::select('SELECT registro_doacao_id,cpf FROM fila_doadores_sangue inner join registros_doacoes on fila_doadores_sangue.registro_doacao_id = registros_doacoes.id_registro_doacao inner join doadores on registros_doacoes.doador_id = doadores.id_doador where posicao = 1');
+            $dadosDoadorChamado = DB::select('SELECT registro_doacao_id,cpf,tipo_doacao FROM fila_doadores_sangue inner join registros_doacoes on fila_doadores_sangue.registro_doacao_id = registros_doacoes.id_registro_doacao inner join doadores on registros_doacoes.doador_id = doadores.id_doador where posicao = 1');
             $doador = new Doador;   
             $infosDoador = $doador->buscarInfosDoadorCPF($dadosDoadorChamado[0]->cpf);
             $infosDoador['id_registro_doacao'] = $dadosDoadorChamado[0]->registro_doacao_id;    //Adicionando 'registro_doacao_id' ao vetor
-            //print_r($infosDoador); //Dá echo em uma string com informações do vetor. Útil para entender como ele está montado.
-
-            //Deletar doador 1 da fila
-            //Atualizar posição dos outros
+            $infosDoador['tipo_doacao'] = $dadosDoadorChamado[0]->tipo_doacao;    //Adicionando 'registro_doacao_id' ao vetor
+            $filaDoadorSangue->removerDoadorFila(1); //Deleta o primeiro da fila e atualiza as posições.
         } else {
             $infosDoador = "fila vazia";
         }
@@ -55,8 +53,9 @@ class FilaDoadorSangue extends Model
         return $infosDoador;
     }
 
-    public function removerDoadorFila(){
-
+    public function removerDoadorFila($posicao){
+        DB::delete('delete from fila_doadores_sangue where posicao = ?',[$posicao]);   //Deleta da fila o doador de determinada posição
+        DB::update('Update fila_doadores_sangue set posicao = posicao-1 where posicao > ?',[$posicao]);  //Ajusta as posições: 3º vai pra segundo, 2º vai pra primeiro, e assim vai...
     }
 
     public function alterarPosicaoDoador(){

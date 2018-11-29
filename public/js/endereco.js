@@ -67,12 +67,17 @@
         limpa_formulário_cep();
     }
     };
-
+/*
+ * Colocamos dentro de um evento window.onload para que comece a execução
+ * somente após a página inteira carregar.
+ */
+window.onload = function() {
     //Quando o valor da combo de estado alterar ele vai executar essa linha. Obs: Usa JQuery.
     //https://github.com/lorysz/dropdown-dinamica-php/blob/master/combo%20estado-cidade.txt
     $('#select_estados').change(function () { //Quando seleciona outro item no select de estados
         alterarCidades('null'); //Passa null pois quem está chamando essa função não é o viaCep. Apenas houve onChange no estado.
     });
+}
 
     function alterarCidades(cidadeDoCep){ //Esse parâmetro é usado para quando essa função for chamada pelo viaCep, ele mandar qual foi a cidade do cep.
         //armazenando o "value" do select que contém a sigla do estado

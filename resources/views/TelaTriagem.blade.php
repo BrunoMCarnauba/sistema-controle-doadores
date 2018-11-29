@@ -4,7 +4,10 @@
 	<meta charset="utf-8"/ >
 	<title>Realizar triagem - Sis Controle de Doadores</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
-    <script type="text/javascript" src="{{asset('js/geral.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/triagem.js')}}"></script>
+	<!-- <script type="text/javascript" src="{{asset('js/geral.js')}}"></script> -->
+    <!-- <script type="text/javascript" src="{{asset('js/utilitarios.js')}}"></script> -->
 
     <style type="text/css">
 		#conteudo{
@@ -60,7 +63,7 @@
 	</nav>
 
 	@if(session('notificacao')) <!-- Se essa página tiver vindo de um redirecionamento junto com a variável 'notificacao' -->	
-	<div class="notificacao"><p>Descrição da notificação</p></div>
+	<div class="notificacao"><p>{{session('notificacao')}}</p></div>
 	@endif
 
 	<!-- Conteudo -->
@@ -154,12 +157,13 @@
 			<div id="observacoes" style="max-width: 430px;">
 				<div class="retanguloTituloMenor">Observações</div>
 				<div>
-					<form id="formObservacoes" action="" method="post">
+					<form id="formObservacoes" action="{{Route('registrarTriagem')}}" method="post">
 						{{csrf_field()}} <!-- Token para a comunicação do cliente com o servidor, para evitar ataque malicioso -->
 						<textarea name="observacoes" style="width: 414px; height: 305px; font-size: 12pt; resize: vertical;"></textarea>
 
-						<input type="submit" name="aprovar" value="Aprovar" class="botoesSimplesMaior" style="background-color: rgb(0,153,0); width: 208px;" onclick="actionTriagem(\"aprovar\",{{session('infosDoador')['id_registro_doacao']}});">
-						<input type="submit" name="reprovar" value="Reprovar" class="botoesSimplesMaior" style="width: 208px;" onclick="actionTriagem(\"reprovar\",{{session('infosDoador')['id_registro_doacao']}});">
+						<!-- Os dois botões ficam com o mesmo nome. E então quando for clicado, chegará no controller na variável aprovacao o value do botão clicado. -->
+						<input type="submit" name="aprovacao" value="Aprovar" class="botoesSimplesMaior" style="background-color: rgb(0,153,0); width: 208px;">
+						<input type="submit" name="aprovacao" value="Reprovar" class="botoesSimplesMaior" style="width: 208px;">
 					</form>
 				</div>
 			</div>

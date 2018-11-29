@@ -3,10 +3,28 @@
  * somente após a página inteira carregar.
  */
 window.onload = function() {
-//Quando a tela carregar ele deve preencher a div das filas com parágrafos com nome e podição dos doadores. Obs: Usa JQuery.
-//Baseado em: https://github.com/lorysz/dropdown-dinamica-php/blob/master/combo%20estado-cidade.txt
-     //Chama a URL carregar-fila-{tipo}-{quantidade}, mandando o tipo e a quantidade via GET. Ela chamará um método do controller de fila.
-    $.get('/carregar-fila-1-3', function (resultadoFila) { //Recebe o html montado de cada cidade
+    setTimeout(function(){
+        // nome da classe do objeto que deseja manipular
+        var e = "notificacao"; 
+
+        // obtém o objeto pelo nome da classe
+        var o = document.getElementsByClassName(e);                 
+
+       /* 
+        * Define a visibilidade como "none". 
+        * Dá o mesmo efeito visual de como se estivesse removido.
+        * Note que getElementsByClassName retornará uma lista de nós(NodeList).
+        * Portanto, para acessar o elemento desejado, é necessário especificar 
+        * qual a chave onde ele se encontra. 
+        * No exemplo é obviamente a chave 0 (zero) pois é único.
+        */
+ 
+        o[0].style.display = 'none';
+        
+    }, 5000); // O tempo em milisegundos. 1 segundo = 1000 milisegundos.
+
+    //Chama a URL carregar-fila-{tipo}-{quantidade}, mandando o tipo e a quantidade via GET. Ela chamará um método do controller de fila.
+     $.get('/carregar-fila-1-3', function (resultadoFila) { //Recebe o html montado de cada cidade
         //alert('teste');
         if(resultadoFila != "vazia"){
             //Remove os parágrafos da div com id "#filaTriagem" que já estão presentes. (Pra evitar que ao por outro cpf os parágrafos do cpf passado continuem.)
@@ -20,7 +38,7 @@ window.onload = function() {
         }
     });
 
-     //Chama a URL carregar-fila-{tipo}-{quantidade}, mandando o tipo e a quantidade via GET. Ela chamará um método do controller de fila.
+    //Chama a URL carregar-fila-{tipo}-{quantidade}, mandando o tipo e a quantidade via GET. Ela chamará um método do controller de fila.
      $.get('/carregar-fila-2-3', function (resultadoFila) { //Recebe o html montado de cada cidade
         //alert('teste');
         if(resultadoFila != "vazia"){
@@ -35,7 +53,7 @@ window.onload = function() {
         }
     });
 
-     //Chama a URL carregar-fila-{tipo}-{quantidade}, mandando o tipo e a quantidade via GET. Ela chamará um método do controller de fila.
+    //Chama a URL carregar-fila-{tipo}-{quantidade}, mandando o tipo e a quantidade via GET. Ela chamará um método do controller de fila.
      $.get('/carregar-fila-3-3', function (resultadoFila) { //Recebe o html montado de cada cidade
         //alert('teste');
         if(resultadoFila != "vazia"){
@@ -50,5 +68,4 @@ window.onload = function() {
         }
     });
 
-            
- }
+};

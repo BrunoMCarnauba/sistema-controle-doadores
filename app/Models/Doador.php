@@ -46,7 +46,7 @@ class Doador extends Model
 
             $idade = $doadorModel->calcularIdade($doador->data_nascimento);
 
-            $infosDoador = array('nome' => $doador->nome, 'idade' => $idade, 'vezesDoou' => $vezesDoou, 'cpf' => $doador->cpf);
+            $infosDoador = array('nome' => $doador->nome, 'idade' => $idade, 'vezesDoou' => $vezesDoou, 'cpf' => $doador->cpf, 'id_doador' => $doador->id_doador);
 
             return $infosDoador;
         } else {

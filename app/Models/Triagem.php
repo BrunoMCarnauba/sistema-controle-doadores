@@ -14,5 +14,6 @@ class Triagem extends Model
         $triagem->save();
         $registroDoacao = new RegistroDoacao;
         $registroDoacao->atualizarRegistroTriagem($idRegistroDoacao,$triagem->id);  //Atualizar registro de doação com id de pretriagem do registro de doacao
+        //Adicionar doador à fila de espera para doação de sangue
     }
 }

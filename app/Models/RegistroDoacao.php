@@ -24,13 +24,15 @@ class RegistroDoacao extends Model
 
     public function atualizarRegistroPreTriagem($idRegistro,$idPreTriagem){
         DB::update('update registros_doacoes set `pre-triagem_id` = ? where `id_registro_doacao` = ?', [$idPreTriagem,$idRegistro]);
+        //Falta mudar o status do registro de doação de acordo com a aprovação ou não aprovação
     }
 
     public function atualizarRegistroTriagem($idRegistro,$idTriagem){
         DB::update('update registros_doacoes set `triagem_id` = ? where `id_registro_doacao` = ?', [$idTriagem,$idRegistro]);
+        //Falta mudar o status do registro de doação de acordo com a aprovação ou não aprovação
     }
 
-    public function buscarInfosDoador($idRegistro){
+    public function buscarInfosDoador($idRegistro){ //ESSE MÉTODO APARENTEMENTE ESTÁ COM PROBLEMA
         $doador = new Doador;
         $registroDoacao = DB::select('select cpf,id_registro_doacao from registros_doacoes inner join doadores on registros_doacoes.doador_id = doadores.id_doador where doador_id = ?', $idRegistro);
 

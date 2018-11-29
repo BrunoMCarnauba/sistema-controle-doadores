@@ -4,9 +4,10 @@
 	<meta charset="utf-8" />
 	<title>Realizar pré-triagem - Sis Controle de Doadores</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
-    <script type="text/javascript" src="{{asset('js/geral.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
-	<script type="text/javascript" src="{{asset('js/filas.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/triagem.js')}}"></script>
+    <!-- <script type="text/javascript" src="{{asset('js/geral.js')}}"></script> -->
+	<!-- <script type="text/javascript" src="{{asset('js/filas.js')}}"></script> -->
 
     <style type="text/css">
 		#conteudo{
@@ -52,8 +53,8 @@
 		
 	</nav>
 
-	@if(session('notificacao')) <!-- Se essa página tiver vindo de um redirecionamento junto com a variável 'notificacao' -->	
-	<div class="notificacao"><p>Descrição da notificação</p></div>
+	@if(session('notificacao')) <!-- Se essa página tiver vindo de um redirecionamento junto com a variável 'notificacao' -->
+	<div class="notificacao"><p>{{session('notificacao')}}</p></div> <!-- Então, mostre a notificacao -->
 	@endif
 
 	<!-- Conteudo -->
@@ -71,7 +72,7 @@
 			</div>
 
 			<!-- Registro pré-triagem -->
-			<form action="{{Route('registrarPreTriagem', ['id_registro_doacao' => session('infosDoador')['id_registro_doacao']])}}" method="post">
+			<form action="{{Route('registrarPreTriagem')}}" method="post">
 				{{csrf_field()}} <!-- Token para a comunicação do cliente com o servidor, para evitar ataque malicioso -->
 				<label for="pressaoArterial" class="labelRegistro">Pressão arterial (mmHg)</label>
 				<input type="text" name="pressaoArterial" class="camposCadastro" size="5" maxlength="7">
