@@ -4,7 +4,7 @@
 	<meta charset="utf-8"/ >
 	<title>Realizar triagem - Sis Controle de Doadores</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
-    <script type="text/javascript" src="{{asset('js/JScript.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/geral.js')}}"></script>
 
     <style type="text/css">
 		#conteudo{
@@ -59,7 +59,9 @@
 		
 	</nav>
 
+	@if(session('notificacao')) <!-- Se essa página tiver vindo de um redirecionamento junto com a variável 'notificacao' -->	
 	<div class="notificacao"><p>Descrição da notificação</p></div>
+	@endif
 
 	<!-- Conteudo -->
 	<div id="conteudo">
@@ -68,9 +70,11 @@
 			<!-- Informações sobre o doador -->
 			<div class="retanguloTitulo" style="margin-top: 15px;">Informações do doador</div>
 			<div class="retanguloConteudo" style="margin-bottom: 10px;">
-				<p>Nome: Doador da Silva Santos</p>
-				<p>Idade: 28 anos</p>
-				<p>Doou 0 vez(es)</p>
+				@if(session('infosDoador')) <!-- Se essa página tiver vindo de um redirecionamento junto com a variável 'infosDoador' -->
+				<p>Nome: {{session('infosDoador')['nome']}}</p>
+				<p>Idade: {{session('infosDoador')['idade']}} anos</p>
+				<p>Doou {{session('infosDoador')['vezesDoou']}} vez(es)</p>
+				@endif
 			</div>
 
 			<!-- Perguntas -->
@@ -141,20 +145,21 @@
 				<div class="retanguloTituloMenor">Quantidade de doadores na fila</div>
 				<div class="retanguloConteudoMenor" style="margin-bottom: 10px;">
 					<label class="retanguloQtdFila">4</label>
-					<p class="retanguloNomeFila">Doador(es) de sangue</p>
+					<p id="qtdDoadoresSangue" class="retanguloNomeFila">Doador(es) de sangue</p>
 					<label class="retanguloQtdFila">0</label>
-					<p class="retanguloNomeFila">Doador(es) de medula óssea</p>
+					<p id="qtdDoadoresMedulaOssea" class="retanguloNomeFila">Doador(es) de medula óssea</p>
 				</div>
 			</div>
 
 			<div id="observacoes" style="max-width: 430px;">
 				<div class="retanguloTituloMenor">Observações</div>
 				<div>
-					<form action="" method="post">
+					<form id="formObservacoes" action="" method="post">
+						{{csrf_field()}} <!-- Token para a comunicação do cliente com o servidor, para evitar ataque malicioso -->
 						<textarea name="observacoes" style="width: 414px; height: 305px; font-size: 12pt; resize: vertical;"></textarea>
 
-						<input type="submit" name="aprovar" value="Aprovar" class="botoesSimplesMaior" style="background-color: rgb(0,153,0); width: 208px;">
-						<input type="submit" name="reprovar" value="Reprovar" class="botoesSimplesMaior" style="width: 208px;">
+						<input type="submit" name="aprovar" value="Aprovar" class="botoesSimplesMaior" style="background-color: rgb(0,153,0); width: 208px;" onclick="actionTriagem(\"aprovar\",{{session('infosDoador')['id_registro_doacao']}});">
+						<input type="submit" name="reprovar" value="Reprovar" class="botoesSimplesMaior" style="width: 208px;" onclick="actionTriagem(\"reprovar\",{{session('infosDoador')['id_registro_doacao']}});">
 					</form>
 				</div>
 			</div>

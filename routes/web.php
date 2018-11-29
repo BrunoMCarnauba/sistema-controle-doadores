@@ -21,6 +21,7 @@ Route::get('/logout', 'LoginController@logout');
 Route::get('/carregar-cidades-de-{siglaEstado}', 'CidadeController@carregarCidades');
 Route::get('/existencia-doador-{cpf}', 'RegistroDoacaoController@buscarDoador');
 
+Route::get('/carregar-fila-{tipo}-{quantidade}', 'FilaController@carregarFila'); //Carregar fila - Atualmente usado pelo javascript filas.js
 
 Route::group(['middleware' => 'login'], function() {
 
@@ -37,11 +38,24 @@ Route::get('/registro-doacao', 'RegistroDoacaoController@registroDoacao')->name(
 Route::post('/registro-doacao/buscar-doador', 'RegistroDoacaoController@buscarDoador')->name('regDoacaoBuscarDoador');
 Route::post('/registrar-doacao','RegistroDoacaoController@registrarDoacao')->name('registrarDoacao');
 
+Route::get('/chamar-doador-triagem', 'RecepcaoController@chamarDoadorTriagem')->name('chamarDoadorTriagem');    //Chama a rota de pré-triagem se houver ao menos 1 doador na fila de espera para triagem.
+Route::get('/chamar-doador-doacao-sangue', 'RecepcaoController@chamarDoadorSangue')->name('chamarDoadorSangue');
+Route::get('/chamar-doador-doacao-medula-ossea', 'RecepcaoController@chamarDoadorMedulaOssea')->name('chamarDoadorMedulaOssea');
+
+Route::get('/pre-triagem', 'PreTriagemController@preTriagem')->name('pre-triagem');
+Route::post('/registrar-pre-triagem-de-{id_registro_doacao}', 'PreTriagemController@registrarPreTriagem')->name('registrarPreTriagem');
+
+Route::get('/triagem', 'TriagemController@triagem')->name('triagem');   //Só é chamado se o doador tiver sido aprovado na pré-triagem.
+Route::post('/aprovar-doador-triagem-de-{id_registro_doacao}', 'TriagemController@aprovarDoadorTriagem')->name('aprovarDoadorTriagem');
+Route::post('/reprovar-doador-triagem-de-{id_registro_doacao}', 'TriagemController@reprovarDoadorTriagem')->name('reprovarDoadorTriagem');
+
 /*
 Pré-triagem, triagem, agendamento, busca, visualização agendamento
 */
 });
 
+//TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE
+Route::get('/testes', 'PreTriagemController@teste');
 
 
 

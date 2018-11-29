@@ -4,7 +4,9 @@
 	<meta charset="utf-8" />
 	<title>Recepção - Sis Controle de Doadores</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
-    <script type="text/javascript" src="{{asset('js/JScript.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/geral.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/filas.js')}}"></script>
 
 	<style type="text/css">
 		#conteudoEsquerda{
@@ -76,45 +78,36 @@
 		<!-- Filas -->
 		<div id="filas">
 			<div class="retanguloTitulo">Fila de doadores para triagem</div>
-				<div class="retanguloConteudo">
-					<p>1 - Nome do doador</p>
-					<p>2 - Nome do doador</p>
-					<p>3 - Nome do doador</p>
-					<p style="text-align: right; margin-right: 5px;">Total: 3</p>
+				<div id="filaTriagem" class="retanguloConteudo">
+					<!-- Preenchido pelo javaScript filas.js -->
 				</div>
 			<div class="retanguloRodape" style="margin-bottom: 25px;">
 				<div id="botoesFila">
-					<a href=""><div class="botaoChamarDoadorDaFila" style="float: left;"></div></a>
+					<a href="{{Route('chamarDoadorTriagem')}}"><div class="botaoChamarDoadorDaFila" style="float: left;"></div></a>
 					<a href=""><div class="botaoTrocarPosicaoDaFila" style="margin-left: 5px; float: left;"></div></a>
 					<a href=""><div class="botaoRemoverDaFila" style="margin-left: 5px; float: left;"></div></a>
 				</div>
 			</div>
 
 			<div class="retanguloTitulo" style="clear: both;">Fila de doadores de sangue</div>
-				<div class="retanguloConteudo">
-					<p>1 - Nome do doador</p>
-					<p>2 - Nome do doador</p>
-					<p>3 - Nome do doador</p>
-					<p style="text-align: right; margin-right: 5px;">Total: 3</p>
+				<div id="filaDoadorSangue" class="retanguloConteudo">
+					<!-- Preenchido pelo javaScript filas.js -->
 				</div>
 			<div class="retanguloRodape" style="margin-bottom: 25px;">
 				<div id="botoesFila">
-					<a href=""><div class="botaoChamarDoadorDaFila" style="float: left;"></div></a>
+					<a href="{{Route('chamarDoadorSangue')}}"><div class="botaoChamarDoadorDaFila" style="float: left;"></div></a>
 					<a href=""><div class="botaoTrocarPosicaoDaFila" style="margin-left: 5px; float: left;"></div></a>
 					<a href=""><div class="botaoRemoverDaFila" style="margin-left: 5px; float: left;"></div></a>
 				</div>
 			</div>
 
 			<div class="retanguloTitulo" style="clear: both;">Fila de doadores de medula óssea</div>
-				<div class="retanguloConteudo">
-					<p><br/></p>
-					<p style="text-align: center;">- Fila vazia -</p>
-					<p><br/></p>
-					<p style="text-align: right; margin-right: 5px;">Total: 0</p>
+				<div id="filaDoadorMedulaOssea" class="retanguloConteudo">
+					<!-- Preenchido pelo javaScript filas.js -->
 				</div>
 			<div class="retanguloRodape" style="margin-bottom: 25px;">
 				<div id="botoesFila">
-					<a href=""><div class="botaoChamarDoadorDaFila" style="float: left;"></div></a>
+					<a href="{{Route('chamarDoadorMedulaOssea')}}"><div class="botaoChamarDoadorDaFila" style="float: left;"></div></a>
 					<a href=""><div class="botaoTrocarPosicaoDaFila" style="margin-left: 5px; float: left;"></div></a>
 					<a href=""><div class="botaoRemoverDaFila" style="margin-left: 5px; float: left;"></div></a>
 				</div>

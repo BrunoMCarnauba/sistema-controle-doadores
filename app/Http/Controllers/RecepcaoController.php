@@ -11,18 +11,26 @@ use App\Models\FilaDoadorMedulaOssea;
 class RecepcaoController extends Controller
 {
     public function recepcao(){
-        //OBS: Falta implementar paginação (Com apenas 2 setinhas < > e com a cor vermelha)
-
-        //Carregar fila de espera para triagem
-        $filaTriagem = new FilaTriagem;
-        $filaTriagem = $filaTriagem->carregarFila(3);    //Recebe um vetor com os ['doadores'] e o total ['total']
-        //Carregar fila de espera para doação de sangue
-        $filaDoadorSangue = new FilaDoadorSangue;
-        //$filaDoadorSangue = $filaDoadorSangue->carregarFila(3);  //Recebe um vetor com os ['doadores'] e o total ['total']
-        //Carregar fila de espera para doação de medula óssea
-        $filaDoadorMedulaOssea = new FilaDoadorMedulaOssea;
-        //$filaDoadorSangue = $filaDoadorSangue->carregarFila(3);  //Recebe um vetor com os ['doadores'] e o total ['total']
-
-        return view ('TelaRecepcao')->with('filaTriagem', $filaTriagem)->with('filaDoadorSangue', $filaDoadorSangue)->with('filaDoadorMedulaOssea', $filaDoadorMedulaOssea);
+        return view ('TelaRecepcao');
     }
+
+    public function chamarDoadorTriagem(){
+        $filaTriagem = new FilaTriagem;
+        $infosDoador = $filaTriagem->chamarDoadorFila();
+
+        if($infosDoador != "fila vazia"){
+            return redirect()->route('pre-triagem')->with('infosDoador', $infosDoador);
+        } else {
+            return redirect()->route('recepcao')->with('notificacao', 'A fila de triagem está vazia!');
+        }
+    }
+
+    public function chamarDoadorSangue(){
+
+    }
+
+    public function chamarDoadorMedulaOssea(){
+
+    }
+
 }

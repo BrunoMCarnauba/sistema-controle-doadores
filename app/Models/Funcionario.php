@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+//Importações
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB; //Pra poder usar DB::select e outros
 
 class Funcionario extends Model
 {

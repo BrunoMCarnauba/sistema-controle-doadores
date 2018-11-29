@@ -4,9 +4,10 @@
 	<meta charset="utf-8" />
 	<title>Registrar doação - Sis Controle de Doadores</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
-	<script type="text/javascript" src="{{asset('js/JScript.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/geral.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('js/registroDoacao.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/filas.js')}}"></script>
 
 	<style type="text/css">
 
@@ -98,27 +99,18 @@
 		<!-- Filas -->
 		<div id="filas">
 			<div class="retanguloTitulo">Fila de doadores para triagem</div>
-				<div class="retanguloConteudo" style="margin-bottom: 10px;">
-					<p>1 - Nome do doador</p>
-					<p>2 - Nome do doador</p>
-					<p>3 - Nome do doador</p>
-					<p style="text-align: right; margin-right: 5px;">Total: 3</p>
+				<div id="filaTriagem" class="retanguloConteudo" style="margin-bottom: 10px;">
+					<!-- Preenchido pelo javaScript filas.js -->
 				</div>
 
 			<div class="retanguloTitulo">Fila de doadores de sangue</div>
-				<div class="retanguloConteudo" style="margin-bottom: 10px;">
-					<p>1 - Nome do doador</p>
-					<p>2 - Nome do doador</p>
-					<p>3 - Nome do doador</p>
-					<p style="text-align: right; margin-right: 5px;">Total: 3</p>
+				<div id="filaDoadorSangue" class="retanguloConteudo" style="margin-bottom: 10px;">
+					<!-- Preenchido pelo javaScript filas.js -->
 				</div>
 			
 			<div class="retanguloTitulo">Fila de doadores de medula óssea</div>
-				<div class="retanguloConteudo" style="margin-bottom: 10px;">
-					<p><br/></p>
-					<p style="text-align: center;">- Fila vazia -</p>
-					<p><br/></p>
-					<p style="text-align: right; margin-right: 5px;">Total: 0</p>
+				<div id="filaDoadorMedulaOssea" class="retanguloConteudo" style="margin-bottom: 10px;">
+					<!-- Preenchido pelo javaScript filas.js -->
 				</div>
 			</div>
 		</div>

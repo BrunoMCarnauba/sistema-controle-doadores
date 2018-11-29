@@ -41,7 +41,7 @@ class FuncionarioController extends Controller
             'dataNascimento' => 'required',
             'usuario' => 'required',
             'senha' => 'required',
-            'confirmaSenha' => 'required|same:senhaFunc',
+            'confirmaSenha' => 'required|same:senha',
             'fotoFuncionario' => 'image'
         ]);
 

@@ -4,7 +4,9 @@
 	<meta charset="utf-8" />
 	<title>Realizar pré-triagem - Sis Controle de Doadores</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
-    <script type="text/javascript" src="{{asset('js/JScript.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/geral.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
+	<script type="text/javascript" src="{{asset('js/filas.js')}}"></script>
 
     <style type="text/css">
 		#conteudo{
@@ -39,8 +41,8 @@
 			<div id="cabecalho_pt2">
 				<h1 style="margin-top: 0px; margin-bottom: 0px; color: white;">Sistema de controle de doadores</h1>
 				<h2 style="margin-top: 0px; color: white">Pré-triagem</h2>
-				<a href="TelaMenu.html" class="botaoInicio">Início</a>
-				<a href="TelaLogin.html" class="botaoSair">Sair</a>
+				<a href="{{Route('menu')}}" class="botaoInicio">Início</a>
+				<a href="{{Route('login')}}" class="botaoSair">Sair</a>
 			</div>
 		</div>
 	</header>
@@ -50,7 +52,9 @@
 		
 	</nav>
 
+	@if(session('notificacao')) <!-- Se essa página tiver vindo de um redirecionamento junto com a variável 'notificacao' -->	
 	<div class="notificacao"><p>Descrição da notificação</p></div>
+	@endif
 
 	<!-- Conteudo -->
 	<div id="conteudo">
@@ -59,13 +63,16 @@
 			<!-- Informações sobre o doador -->
 			<div class="retanguloTitulo" style="margin-top: 15px;">Informações do doador</div>
 			<div class="retanguloConteudo" style="margin-bottom: 10px;">
-				<p>Nome: Doador da Silva Santos</p>
-				<p>Idade: 28 anos</p>
-				<p>Doou 0 vez(es)</p>
+				@if(session('infosDoador')) <!-- Se essa página tiver vindo de um redirecionamento junto com a variável 'infosDoador' -->
+				<p>Nome: {{session('infosDoador')['nome']}}</p>
+				<p>Idade: {{session('infosDoador')['idade']}} anos</p>
+				<p>Doou {{session('infosDoador')['vezesDoou']}} vez(es)</p>
+				@endif
 			</div>
 
 			<!-- Registro pré-triagem -->
-			<form action="" method="post">
+			<form action="{{Route('registrarPreTriagem', ['id_registro_doacao' => session('infosDoador')['id_registro_doacao']])}}" method="post">
+				{{csrf_field()}} <!-- Token para a comunicação do cliente com o servidor, para evitar ataque malicioso -->
 				<label for="pressaoArterial" class="labelRegistro">Pressão arterial (mmHg)</label>
 				<input type="text" name="pressaoArterial" class="camposCadastro" size="5" maxlength="7">
 				<br/>
@@ -80,11 +87,16 @@
 				<br/>
 				<label for="pulso" class="labelRegistro">Pulso (Bpm)</label>
 				<input type="number" name="pulso" class="camposCadastro" style="width: 50px;" maxlength="3">
+				<br/>
 
-				<div class="erroCadastro" style="max-width: 560px;"> 
+				@if ($errors->any()) <!-- Checa se houve erros -->
+				<div class="erroCadastro"> 
 					<strong>Erro!</strong> 
-					<p>Descrição do erro</p>
+					@foreach ($errors->all() as  $error) <!-- Lista todos os erros -->
+					<p>{{$error}}</p>
+					@endforeach
 				</div>
+				@endif
 
 				<input type="submit" value="Registrar pré-triagem" class="botoesSimples" style="margin-top: 20px;">
 			</form>

@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<title>Visualizar agendamentos - Sis Controle de Doadores</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/estilo.css')}}"> 
-    <script type="text/javascript" src="{{asset('js/JScript.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/geral.js')}}"></script>
 
 	<style type="text/css">
 
