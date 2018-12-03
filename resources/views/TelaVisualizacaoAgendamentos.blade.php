@@ -74,17 +74,20 @@
 			<div id="cabecalho_pt2">
 				<h1 style="margin-top: 0px; margin-bottom: 0px; color: white;">Sistema de controle de doadores</h1>
 				<h2 style="margin-top: 0px; color: white">Visualização de agendamentos</h2>
-				<a href="TelaMenu.html" class="botaoInicio">Início</a>
-				<a href="TelaLogin.html" class="botaoSair">Sair</a>
+				<a href="{{Route('menu')}}" class="botaoInicio">Início</a>
+				<a href="{{Route('login')}}" class="botaoSair">Sair</a>
 			</div>
 		</div>
 	</header>
 
-	<div class="notificacao"><p>Descrição da notificação</p></div>
+	@if(session('notificacao')) <!-- Se essa página tiver vindo de um redirecionamento junto com a variável 'notificacao' -->
+	<div class="notificacao"><p>{{session('notificacao')}}</p></div> <!-- Então, mostre a notificacao -->
+	@endif
 
 	<div id="conteudo">
 		<div id="busca" style="margin-left: 6.5%;">
 			<form action="" method="post">
+				{{csrf_field()}} <!-- Token para a comunicação do cliente com o servidor, para evitar ataque malicioso -->
 				<!-- Campo de busca -->
 				<div class="retanguloBusca">
 					<label for="tipoBusca" class="labelRegistro">Buscar por</label>

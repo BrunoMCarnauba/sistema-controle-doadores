@@ -103,7 +103,7 @@
 			</div>
 			@endif
 
-		</div>
+		</div> <!-- Fim conteúdo esquerda -->
 
 		<!-- Filas -->
 		<div id="filas">
@@ -121,10 +121,9 @@
 				<div id="filaDoadorMedulaOssea" class="retanguloConteudo" style="margin-bottom: 10px;">
 					<!-- Preenchido pelo javaScript filas.js -->
 				</div>
-			</div>
-		</div>
+		</div> <!-- Fim div filas -->
 
-	</div>
+	</div> <!-- Fim conteudo -->
 	<!-- Rodapé -->
 	<footer>
 		<div id="rodape"></div>

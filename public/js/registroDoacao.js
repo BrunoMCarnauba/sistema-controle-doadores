@@ -16,7 +16,7 @@ window.onload = function() {
             $('#filaTriagem').append(resultadoFila);
         } else {
             $('#filaTriagem').find("p").remove();
-            $('#filaTriagem').append("<p>. </p><p style=\"text-align: center;\"> - Fila vazia - </p><p>. </p>");
+            $('#filaTriagem').append("<p><br/></p><p style=\"text-align: center;\"> - Fila vazia - </p><p><br/></p>");
             $('#filaTriagem').append("<p style=\"text-align: right; margin-right: 5px;\">Total: 0</p>");
         }
     });

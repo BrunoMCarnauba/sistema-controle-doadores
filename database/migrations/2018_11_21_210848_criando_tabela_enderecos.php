@@ -14,13 +14,13 @@ class CriandoTabelaEnderecos extends Migration
     public function up()
     {
         Schema::create('enderecos', function (Blueprint $table) {
-            $table->increments('id_endereco');
+            $table->increments('id_endereco');  //Chave primária
             $table->string('cep');
             $table->string('estado');
             $table->string('cidade');
             $table->string('logradouro');
             $table->integer('numero_residencia');
-            $table->string('complemento')->nullable();
+            $table->string('complemento')->nullable();  //Pode ser nulo
         });
     }
 

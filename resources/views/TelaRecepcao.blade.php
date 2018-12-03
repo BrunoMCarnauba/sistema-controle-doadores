@@ -123,8 +123,8 @@
 			<a href="{{Route('cadastroDoador')}}"><div class="botaoMedioCadastrarDoador" style="margin-bottom: 25px; margin-left: 10px;"></div></a>
 			<a href="{{Route('registroDoacao')}}"><div class="botaoMedioRegistrarDoacao" style="margin-bottom: 25px; margin-left: 10px;"></div></a>
 			<a href=""><div class="botaoMedioBuscarCadastros" style="margin-bottom: 25px; margin-left: 10px;"></div></a>
-			<a href=""><div class="botaoMedioAgendarDoacao" style="margin-bottom: 25px; margin-left: 10px;"></div></a>
-			<a href=""><div class="botaoMedioVisualizarAgendamentos" style="margin-bottom: 25px; margin-left: 10px;"></div></a>
+			<a href="{{Route('agendamentoDoacao')}}"><div class="botaoMedioAgendarDoacao" style="margin-bottom: 25px; margin-left: 10px;"></div></a>
+			<a href="{{Route('visualizarAgendamentos')}}"><div class="botaoMedioVisualizarAgendamentos" style="margin-bottom: 25px; margin-left: 10px;"></div></a>
 			<br clear=“both”/>
 		</div>
 	</div>	

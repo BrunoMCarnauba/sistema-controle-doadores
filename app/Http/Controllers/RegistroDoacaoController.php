@@ -55,7 +55,7 @@ class RegistroDoacaoController extends Controller
                 return redirect()->route('recepcao')->with('notificacao','Necessário agendar doação.');
             }
         } else {
-            return redirect()->route('recepcao')->with('erroBusca','Necessário agendar doação.');
+            return redirect()->route('registroDoacao')->with('erroBusca','Não existe cadastro com o CPF informado.');
         }
 
         /* Precisa fazer a div aumentar a altura automaticamente, pra poder por: return redirect()->route('recepcao')->with('notificacao','Doação registrada com sucesso.<br/>Doador adicionado à fila de espera para triagem.'); */

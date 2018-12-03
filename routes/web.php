@@ -48,9 +48,15 @@ Route::post('/registrar-pre-triagem', 'PreTriagemController@registrarPreTriagem'
 Route::get('/triagem', 'TriagemController@triagem')->name('triagem');   //Só é chamado se o doador tiver sido aprovado na pré-triagem.
 Route::post('/registrar-triagem', 'TriagemController@registrarTriagem')->name('registrarTriagem');
 
+Route::get('/agendamento-doacao', 'AgendamentoController@agendamentoDoacao')->name('agendamentoDoacao');
+Route::post('/agendar-doacao', 'AgendamentoController@agendarDoacao')->name('agendarDoacao');
+Route::get('/visualizar-agendamentos', 'AgendamentoController@visualizarAgendamentos')->name('visualizarAgendamentos');
+Route::get('/buscar-agendamentos', 'AgendamentoController@buscarAgendamentos')->name('buscarAgendamentos');
+
 /*
-Pré-triagem, triagem, agendamento, busca, visualização agendamento
+busca de cadastros
 */
+
 });
 
 //TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE
